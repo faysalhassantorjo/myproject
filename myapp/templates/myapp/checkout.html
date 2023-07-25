@@ -1,0 +1,210 @@
+{% extends 'myapp/base.html'%}
+{% load static %}
+{% block head %}
+<style>
+	.hidden{
+    display:none;
+}
+</style>
+
+{% endblock %}
+
+{% block body%}
+
+		<!-- Start Checkout -->
+		<section class="shop checkout section">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-8 col-12">
+						<div class="checkout-form">
+							<h2>Make Your Checkout Here</h2>
+							<p>Please register in order to checkout more quickly</p>
+							<!-- Form -->
+	 <h2>Select your location:</h2>
+													<form class="mb-4">
+														<label>
+															<input type="radio" name="location" value="dhaka"> Dhaka
+														</label>
+														<label>
+															<input type="radio" name="location" value="outside-dhaka"> Outside Dhaka
+														</label>
+													</form>
+							<div class="col-lg-10">
+								<div class="box-element" id="form-wrapper">
+									<form id="form">
+										<div id="user-info">
+											<div class="form-field">
+												<input required class="form-control" type="text" name="name" placeholder="Name....">
+											</div>
+											<div class="form-field">
+												<input required class="form-control" type="email" name="email" placeholder="Email....">
+											</div>
+										</div>
+
+										<div id="shipping-info">
+
+											<hr>
+
+
+											   <p>Shiping Information: </p>
+												<hr>
+
+											   <div class="form-field pb-2">
+													<input class="form-control" type="text" name="address" placeholder="Address...">
+												   </div>
+
+
+
+												<div class="form-field pb-2">
+														<input class="form-control" type="text" name="phonNumber" placeholder="Phon Number">
+													</div>
+												<div class="form-field pb-2">
+														<input class="form-control" type="text" name="emailAddress" placeholder="Email-address...">
+													</div>
+										</div>
+										<hr>
+										<input id="form-button" class="btn btn-success btn-block" type="submit" value="Next">
+									</form>
+								</div>
+							<br>
+								<div class="box-element hidden"  id="payment-info">
+									<label class="checkbox-inline" for="2"><input name="news" id="2" type="checkbox"> Cash On Delivery</label>
+									<button class="btn btn-dark" id="make-payment">Conform</button>
+								</div>
+							</div>
+							<!--/ End Form -->
+						</div>
+					</div>
+					<div class="col-lg-4 col-12">
+						<div class="order-details">
+							<!-- Order Widget -->
+							<div class="single-widget">
+								<h2>CART  TOTALS</h2>
+								<div class="content">
+									<ul>
+										<li>Sub Total item: <span>{{order.get_cart_items}}</span></li>
+
+										<li class="last">Sub Total<span>Tk: {{order.get_cart_total}}</span></li>
+								    	<li>Shipping Charge: <span id="totalAmount"></span> tk </li>
+										<hr>
+										<li>Total: <strong id="totaltk"> {{order.get_cart_total}}</strong>tk</li>
+								</div>
+							</div>
+							<!--/ End Order Widget -->
+							<!-- Order Widget -->
+							<div class="single-widget">
+								<h2>Payments</h2>
+								<div class="content">
+									<div class="checkbox">
+										<label class="checkbox-inline" for="1"><input name="updates" id="1" type="checkbox"> Check Payments</label>
+										<label class="checkbox-inline" for="2"><input name="news" id="2" type="checkbox"> Cash On Delivery</label>
+										<label class="checkbox-inline" for="3"><input name="news" id="3" type="checkbox"> PayPal</label>
+									</div>
+								</div>
+							</div>
+							<!--/ End Order Widget -->
+							<!-- Payment Method Widget -->
+							<div class="single-widget payement">
+								<div class="content">
+<!--									<img src="images/payment-method.png" alt="#">-->
+								</div>
+							</div>
+							<!--/ End Payment Method Widget -->
+							<!-- Button Widget -->
+							<div class="single-widget get-button">
+								<div class="content">
+									<div class="button">
+										<a href="#" class="btn">proceed to checkout</a>
+									</div>
+								</div>
+							</div>
+							<!--/ End Button Widget -->
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<!--/ End Checkout -->
+
+
+		<script>
+ 		var shipping = '{{order.shipping}}';
+        var totalInt = '{{order.get_cart_total}}';
+        var total = parseInt(totalInt, 10);
+        const dhakaAmount = 60;
+        var Shipping_charge = 100;
+
+        const totalAmountElement = document.getElementById('totalAmount');
+        const totaltkElement = document.getElementById('totaltk');
+
+        document.querySelectorAll('input[type=radio][name=location]').forEach(radio => {
+            radio.addEventListener('change', () => {
+                if (radio.value === 'dhaka') {
+                    Shipping_charge = 60;
+                } else if (radio.value === 'outside-dhaka') {
+                    Shipping_charge = 100;
+                }
+                total = total + Shipping_charge;
+                totalAmountElement.textContent = total;
+                totaltkElement.textContent = total;
+            });
+        });
+
+
+
+
+			if(user !='AnonymousUser'){
+				document.getElementById('user-info').innerHTML=''
+			}
+			var form=document.getElementById('form')
+
+			form.addEventListener('submit',function(e){
+				e.preventDefault()
+				console.log("Form submitted")
+				document.getElementById("form-button").classList.add('hidden')
+				document.getElementById("payment-info").classList.remove('hidden')
+			})
+
+			document.getElementById('make-payment').addEventListener('click', function(a) {
+				submitFormData();
+			  });
+
+			  function submitFormData() {
+				console.log('Payment Button Clicked');
+				var userFormData = {
+				  'name': null,
+				  'email': null,
+				  'total': total
+				};
+				var shippingInfo = {
+				  'address': form.address.value,
+				  'email-address': form.emailAddress.value,
+				  'phon-number': form.phonNumber.value,
+				};
+
+
+				var url = '/process_order/';
+				fetch(url, {
+					method: 'POST',
+					headers: {
+					  'Content-Type': 'application/json',
+					  'X-CSRFToken': csrftoken
+					},
+
+					body: JSON.stringify({
+					  'form': userFormData,
+					  'shipping': shippingInfo
+					})
+				  })
+				  .then((response) => response.json())
+				  .then((data) => {
+					console.log("success", data);
+					alert("transaction completed");
+					cart={}
+					document.cookie='cart=' +JSON.stringify(cart)+ ";domain=;path=/"
+					window.location.href = "/";
+				  });
+			  }
+
+		</script>
+{%endblock%}

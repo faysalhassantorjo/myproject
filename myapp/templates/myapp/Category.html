@@ -1,0 +1,242 @@
+<!doctype html>
+{% load static %}
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <link href="https://fonts.googleapis.com/css?family=Quicksand:400,600,700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="{% static 'myapp/fonts/icomoon/style.css' %}">
+
+    <link rel="stylesheet" href="{% static 'myapp/homecss/owl.carousel.min.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Bootstrap CSS --><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,100,0,0" />
+    <link rel="stylesheet" href="{% static 'myapp/homecss/bootstrap.min.css' %}">
+    
+    <!-- Style -->
+    <link rel="stylesheet" href="{% static 'myapp/homecss/style.css' %}">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Advent+Pro:wght@100;300&family=Sofia&display=swap" rel="stylesheet">
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lumanosimo&display=swap" rel="stylesheet">
+    <title>Website Menu #7</title>
+
+    <style>
+      .cat {
+      
+          max-height: 550px;
+          display: flex;
+          position: relative;
+          overflow: hidden;
+      }
+      
+      .cat img {
+          max-width: 100%;
+      }
+  
+      li a{
+        font-family: 'Lumanosimo', cursive;
+
+      }
+   
+      footer {
+        background-color: #333;
+        color: #fff;
+        padding: 20px;
+      }
+      /* Optionally, center the footer content */
+      .footer-content {
+        text-align: center;
+      }
+      li{
+        display: inline-block;
+        padding: 10px;
+      }
+      li a{
+        color:rgb(193, 191, 191);
+      }
+      li a:hover{
+        color: #fff;
+      }
+      p{
+        font-family: 'Lumanosimo', cursive;
+      }
+      h2{
+        font-family: 'Lumanosimo', cursive;
+      }
+  
+      
+  </style>
+
+  </head>
+  <body>
+
+
+    <div class="site-mobile-menu site-navbar-target">
+      <div class="site-mobile-menu-header">
+        <div class="site-mobile-menu-close mt-3">
+          <span class="icon-close2 js-menu-toggle"></span>
+        </div>
+      </div>
+      <div class="site-mobile-menu-body"></div>
+    </div> <!-- .site-mobile-menu -->
+    
+    
+    <div class="site-navbar-wrap">
+      <div class="site-navbar-top">
+        <div class="container py-3">
+          <div class="row align-items-center">
+            <div class="col-6">
+              <div class="d-flex mr-auto">
+                <a href="#" class="d-flex align-items-center mr-4">
+                  <span class="icon-envelope mr-2"></span>
+                  <span class="d-none d-md-inline-block">longfashion2020@gmail.com</span>
+                </a>
+                <a href="#" class="d-flex align-items-center mr-auto">
+                  <span class="icon-phone mr-2"></span>
+                  <span class="d-none d-md-inline-block">+880 1791-612258</span>
+                </a>
+              </div>
+            </div>
+            <div class="col-6 text-right">  {% if user.is_authenticated %}
+              <p style="color: #fff;">Hello <strong>{{user.username}}</strong>! Fllow our social platform</p>
+                          {% endif %}
+              <div class="mr-auto">
+                <a href="#" class="p-2 pl-0"><span class="icon-twitter"></span></a>
+                <a href="https://www.facebook.com/LONGGFASHION" target="_blank" class="p-2 pl-0"><span class="icon-facebook"></span></a>
+                <a href="#" class="p-2 pl-0"><span class="icon-linkedin"></span></a>
+                <a href="#" class="p-2 pl-0"><span class="icon-instagram"></span></a>
+              </div>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="site-navbar site-navbar-target js-sticky-header">
+        <div class="container">
+          <div class="row align-items-center">
+            <div class="col-2">
+              <h1 class="my-0 site-logo"><a href="/">Lonng</a></h1>
+            </div>
+         
+            <div class="col-10">
+              <nav class="site-navigation text-right" role="navigation">
+                <div class="container">
+                  <div class="d-inline-block d-lg-none ml-md-0 mr-auto py-3">
+                    <a href="#" class="site-menu-toggle js-menu-toggle text-white"><span class="icon-menu h3">&nbsp;&nbsp;</span></a>
+                    <a href="{% url 'cart' %}">    <i style="color: #fff; font-size:30px;" class="me-1 fa fa-shopping-basket"><span style="font-size: 10px; background-color:black; padding: 5px;border-radius:50%;">{{cartItems}}</span></i></a>
+
+                  </div>
+
+                  <ul class="site-menu main-menu js-clone-nav d-none d-lg-block">
+                <a href="{% url 'cart' %}">    <i style="color: #f74f06; font-size:30px; display: inline-block" class="me-1 fa fa-shopping-basket"><span style="font-size: 10px; background-color:rgb(0, 0, 0);color:#ffff; padding: 5px;border-radius:50%;">{{cartItems}}</span></i></a>
+
+
+                    <li class="has-children">
+                      <a href="#" class="nav-link">Category</a>
+                      <ul class="dropdown arrow-top">
+                        {% for category in categories %}
+                        <li><a href="{% url 'product_list' category_id=category.id %}" style="font-size: 12px;" class="nav-link">{{category.name}}</a></li>
+                       {% endfor %}
+                      </ul>
+                    </li>
+                    <li class="has-children">
+                      <a href="#" class="nav-link">Extra</a>
+                      <ul class="dropdown arrow-top">
+                       <li><a href="#about-section" class="nav-link">Size Chart</a></li>
+                    <li><a href="#events-section" class="nav-link">About Us</a></li>
+                    <li><a href="#contact-section" class="nav-link">Contact</a></li>
+                      </ul>
+                    </li>
+                    <li class="active">
+                          {% if user.is_authenticated %}
+                      <a href="{% url 'logout' %}" class="nav-link">Logout <span class="material-symbols-outlined mt-1">logout   </span></a>
+                          {% else %}
+                      <a href="{% url 'login' %}" class="nav-link">Login <span class="material-symbols-outlined mt-1">login   </span></a>
+                          {% endif %}
+
+                    </li>
+
+
+                    
+                  </ul>
+                </div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+
+    <div class="hero" style="background-image: url('{% static 'images/headerImg.jpg' %}');"></div>
+  
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-12 d-flex justify-content-center p-4 mt-3"
+    ><h2 style="font-family: 'Lumanosimo', cursive;">All Category</h2></div>
+  </div>
+</div>
+
+    <div class="container">
+      <div class="row">        
+        {% for categorie in categories %}
+          <div class="col-6 col-md-4 col-lg-4 mt-4 cat d-flex ">
+            <a href="{% url 'product_list' category_id=categorie.id %}">  <img src="{{categorie.imageURL}}" class="img-fluid" alt=""></a>
+          </div>
+        {% endfor %}
+
+      </div>
+
+         
+  </div>
+
+   <footer class="mt-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3 footer-content mt-5">
+          <!-- Add your logo or any other content here -->
+          <h1  style="font-size:5rem; font-family: 'Sofia', cursive;  color:#f74f06;">Lonng</h1>
+        </div>
+        <div class="col-md-5 footer-content mt-5">
+
+          <ul class="list-unstyled ">
+            <li><a href="">Home</a></li>
+            <li><a href="">About Us</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+        </div>
+        <div class="col-md-4 footer-content mt-5">
+          <p>Email: longfashion2020@gmail.com</p>
+          <p>Phone: +880 1791-612258</p>
+        </div>
+      </div>
+      <div class="row col-12 d-flex justify-content-center mt-3">
+        <div class="col-12 d-flex justify-content-center">
+        <p>© 2023 Lonng | All rights reserved.</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+  
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+      
+    <script src="{% static 'myapp/homeJs/jquery-3.3.1.min.js' %}"></script>
+    <script src="{% static 'myapp/homeJs/popper.min.js' %}"></script>
+    <script src="{% static 'myapp/homeJs/bootstrap.min.js' %}"></script>
+    <script src="{% static 'myapp/homeJs/jquery.sticky.js' %}"></script>
+    <script src="{% static 'myapp/homeJs/main.js' %}"></script>
+  </body>
+</html>

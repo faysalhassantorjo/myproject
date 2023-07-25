@@ -1,0 +1,75 @@
+.fa-bars,
+.fa-user,
+.fa-shopping-cart {
+    color: #f74;
+    font-size: 30px;
+}
+
+.bg {
+    margin-top: 10px;
+    background-color: #ffffff;
+    border-radius: 5px;
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.2), 0 6px 10px 0 rgba(0, 0, 0, 0.1);
+    padding: 10px;
+}
+
+.logo {
+    color: #f74;
+    font-size: 40px;
+    font-family: 'Yeseva One', cursive;
+}
+
+.menuoption {
+    position: absolute;
+    top: 0px;
+    z-index: 9;
+    width: 20%;
+    height: 100vh;
+    background: #f1f1f1;
+    transition: left 0.3s ease-in-out;
+}
+
+.menuoption {
+    background-color: #ffffff;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.menuTitle {
+    margin-top: 60px;
+    margin-left: 20px;
+}
+
+.menuOption {
+    margin-left: 30px;
+}
+
+.menuOption ul li {
+    text-decoration: none;
+    list-style: none;
+}
+
+.menuOption ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.menuOption li {
+    padding: 10px;
+}
+
+.menuOption li:hover {
+    background: #ddd;
+    color: black;
+}
+
+.row .title {
+    text-align: center;
+}
+
+.title {
+    color: #f74;
+    font-size: 10px;
+    font-family: 'Yeseva One', cursive;
+}

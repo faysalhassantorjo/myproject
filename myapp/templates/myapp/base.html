@@ -1,0 +1,96 @@
+ <!DOCTYPE html>
+{% load static %}
+<html lang="zxx">
+<head>
+    <script>
+        		var user='{{request.user}}'
+		function getToken(name){
+			var cookieValue=null;
+			if(document.cookie && document.cookie !==''){
+				var cookies = document.cookie.split(';');
+				for(var i=0; i<cookies.length; i++){
+					var cookie=cookies[i].trim();
+					if(cookie.substring(0,name.length+1)==(name+'=')){
+						cookieValue=decodeURIComponent(cookie.substring(
+							name.length+1
+						));
+						break;
+					}
+				}
+			}
+			return cookieValue;
+		}
+		var csrftoken=getToken('csrftoken');
+
+    </script>
+    {% block head %}
+    {% endblock %}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed&family=Roboto:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'myapp/css/nav.css'%}">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="{% static 'myapp/css/subcategory.css' %}">
+    <!-- <link rel="stylesheet" href="style2.css"> -->
+<!--    <link rel="stylesheet" href="{% static 'myapp/css/productScreen.css' %}">-->
+    <link rel="stylesheet" href="{% static 'myapp/css/cart.css' %}">
+    <link rel="stylesheet" href="{% static 'myapp/css/cartresponsible.css' %}">
+    <link rel="stylesheet" href="{% static 'myapp/css/checkout.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Yeseva+One&display=swap" rel="stylesheet">
+</head>
+<body>
+<!--    <div class="container bg">-->
+<!--        <div class="row align-items-center justify-content-center">-->
+<!--            <div class="col-sm-2 col-2 col-md-2 col-lg-2 mx-auto">-->
+<!--               <i onclick="openMenu()" class="fa-solid fa-bars"></i></a>-->
+<!--            </div>-->
+<!--            <div class="col-sm-4 col-4 col-md-4 col-lg-4 mx-auto">-->
+
+<!--                <a href="/" style="text-decoration: none; color: #f74f06" class="logo">লং</a>-->
+<!--        </div>-->
+<!--            <div class="col-sm-6 col-6 col-md-6 col-lg-6 mx-auto">-->
+<!--                <div class="row">-->
+
+<!--                    <div class="col"> <a href="{% url 'cart' %}"> <i class="fas fa-shopping-cart"></i></a>{{cartItems}}</div>-->
+<!--                    <div class="col">-->
+<!--                         <div class="row">-->
+<!--                             <div class="col-6">-->
+<!--                                  <i class="fa-solid fa-user"></i>-->
+<!--                                           {% if user.is_authenticated %}-->
+<!--                          <p>{{user.username}}</p>-->
+<!--                          {% endif %}-->
+<!--                             </div>-->
+<!--                             <div class="col-6">-->
+
+<!--                          {% if user.is_authenticated %}-->
+<!--                          <a class="btn btn-dark" href="{% url 'logout' %}">Log out</a>-->
+<!--                          {% else %}-->
+<!--                          <a class="btn btn-dark" href="{% url 'login' %}">Login Or Signup</a>-->
+<!--                          {% endif %}-->
+<!--                             </div>-->
+<!--                         </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--    <div class="menuoption" style="left:-30%; background-color:black;">-->
+<!--        <div class="menuTitle"><h3 style="color: #f74f06">Category &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    <span  onclick="closeNav()">  <i class="fa-solid fa-circle-xmark"></i></span></h3></div>-->
+<!--        <div class="menuOption">  <ul>-->
+
+<!--        </ul></div>-->
+
+<!--    </div>-->
+
+{% block body %}
+
+{% endblock %}
+        <script rel="stylesheet" src="{% static 'myapp/js4/cart.js' %}"></script>
+</body>
+</html>

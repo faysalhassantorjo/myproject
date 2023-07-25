@@ -1,0 +1,104 @@
+.swiper{
+    position: relative;
+}
+.swiper{
+    width: 100%;
+    height: 100vh;
+}
+.swiper-slide img{
+    width: 100%;
+    height: 100%;
+}
+.container{
+    position:absolute;
+z-index: 1;
+
+     top: 1px;
+    left: 50%;
+    right: 50%;
+    transform: translate(-50%,50%);
+    padding:10px;
+    /* text-align: center; */
+    align-items: center;
+    background-color: rgb(255, 255, 255,.1);
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.4), 0 6px 10px 0 rgba(0, 0, 0, 0.6);
+}
+
+
+.fa-bars,.fa-user{
+ color: #f74;
+    font-size: 40px;
+}
+
+.swiper-slide{
+    position: relative;
+}
+.hometitle{
+    position: absolute;
+    left: 50%;
+    right: 50%;
+    top: 50%;
+    bottom: 50px;
+    transform: translateX(-50%,50%);
+    transform: translateY(-50%,50%);
+     background-color: #ffffff;
+
+}
+.hometitle a{
+    text-decoration: none;
+    color:#f74;
+}
+.hometitle a h4{
+    font-size: 60px;
+
+}
+.logo{
+    color:#f74;
+    font-size: 40px;
+    font-style: oblique;
+}
+
+.menuoption{
+    position: absolute;
+    top:0px;
+    z-index: 9;
+  width: 20%;
+  height: 100vh;
+  background: #f1f1f1;
+  transition: left 0.3s ease-in-out;
+
+}
+.menuTitle{
+    margin-top: 60px;
+    margin-left: 20px;
+}
+.menuOption{
+    margin-left: 30px;
+}
+.menuOption ul li{
+    text-decoration: none;
+    list-style: none;
+}
+.menuOption ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .menuOption li {
+    padding: 10px;
+  }
+
+  .menuOption li:hover {
+    background: #ddd;
+  }
+
+.row .title{
+    text-align: center;
+}
+
+.title{
+    color:#f74;
+    font-size: 40px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
